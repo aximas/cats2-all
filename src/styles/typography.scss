@@ -1,0 +1,133 @@
+@import 'src/styles/mixins';
+
+.h1 {
+  @include h1;
+
+  @include block_1400 {
+    @include h2;
+  }
+
+  @include block_1200 {
+    @include h3;
+  }
+
+  @include block_992 {
+    @include h4;
+  }
+
+  @include block_768 {
+    @include h2;
+  }
+
+  @include block_576 {
+    @include h3;
+  }
+
+  @include block_480 {
+    @include h5;
+  }
+}
+
+.h2 {
+  @include h2;
+
+  @include block_1400 {
+    @include h3;
+  }
+
+  @include block_1200 {
+    @include h4;
+  }
+
+  @include block_992 {
+    @include h5;
+  }
+
+  @include block_768 {
+    @include h3;
+  }
+  //  START !!!
+  @include block_576 {
+    @include h4;
+  }
+
+  @include block_480 {
+    @include h5;
+  }
+  //	END !!!
+}
+
+.h3 {
+  @include h3;
+}
+
+.h4 {
+  @include h4;
+
+  @include block_576 {
+    @include h6;
+  }
+}
+
+.h5 {
+  @include h5;
+
+  @include block_576 {
+    @include h6;
+  }
+}
+
+.h6 {
+  @include h6;
+
+  @include block_768 {
+    @include caption;
+  }
+}
+
+.subtitle {
+  @include subtitle;
+
+  @include block_768 {
+    @include body-sm;
+  }
+
+  @include block_480 {
+    @include caption;
+  }
+}
+
+.subtitle-md {
+  @include subtitle-md;
+
+  @include block_768 {
+    @include body-md;
+  }
+}
+
+.body {
+  @include body;
+
+  @include block_480 {
+    @include body-sm;
+  }
+}
+
+.body-md {
+  @include body-md;
+  @include block_480 {
+    @include caption;
+  }
+}
+
+.body-sm {
+  @include body-sm;
+}
+
+.caption {
+  @include caption;
+}
+
+.overline {
+  @include overline;
+}
