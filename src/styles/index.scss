@@ -1,0 +1,72 @@
+@import 'normalize';
+@import 'typography';
+@import 'src/styles/mixins';
+
+:root {
+  /* Font Families */
+  --font-base: 'Creato Display', -apple-system, blinkmacsystemfont, 'Segoe UI',
+  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+  'Helvetica Neue', sans-serif;
+}
+
+html {
+  font-size: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+ul {
+  list-style-type: none;
+}
+
+label {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  color: transparent; // for hide native alt text
+  display: block;
+  max-width: 100%;
+  position: relative;
+
+  &::after {
+    align-items: center;
+    background-color: #ccc;
+    color: rgb(100 100 100);
+    content: attr(alt);
+    display: flex;
+    font-size: 0.8em;
+    height: inherit;
+    justify-content: center;
+    left: 0;
+    line-height: 1em;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: break-spaces;
+    width: inherit;
+  }
+}
+
+.container {
+  background-image: linear-gradient(150.57deg,#d3e4f3 21.26%,#e8ecef 85.79%);
+  min-height: 100vh;
+}
