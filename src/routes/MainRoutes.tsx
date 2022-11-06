@@ -5,8 +5,7 @@ import React from 'react';
 export const MainRoutes = () => {
     return (
         <Routes>
-            <Route path="*" element={<Layout />}>
-            </Route>
+            <Route path="*" element={<Layout />} />
         </Routes>
     )
 }

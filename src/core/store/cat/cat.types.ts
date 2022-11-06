@@ -1,6 +1,6 @@
 export type TParams = {limit: number | null, page: number | null} | null
 
-export interface Breeds {
+export interface IBreeds {
     weight: {
         imperial: string,
         metric: string
@@ -49,10 +49,13 @@ export interface Breeds {
     }
 }
 
-export interface InitialState {
+export interface IInitialState {
     breeds: {
-        data: Breeds[] | null,
+        data: IBreeds[] | null,
         isLoading: boolean,
-        totalCount: number
+        totalCount: number,
+        current: {
+            data: IBreeds | null
+        }
     }
 }

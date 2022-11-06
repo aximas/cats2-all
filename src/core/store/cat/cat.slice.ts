@@ -1,28 +1,55 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Breeds, InitialState} from './cat.types';
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {IBreeds, IInitialState} from "./cat.types";
 
-const initialState: InitialState = {
+const initialState: IInitialState = {
     breeds: {
         data: null,
         isLoading: false,
-        totalCount: 0
+        totalCount: 0,
+        current: {
+            data: null
+        }
     }
 };
 
 const catSlice = createSlice({
-    name: 'cats',
+    name: "cats",
     initialState,
     reducers: {
-        setBreeds: ((state, action:PayloadAction<Breeds[]>) => {
-            if (action.payload) return {...state, breeds: {totalCount: state.breeds.totalCount, isLoading: false, data: action.payload}};
-            return {...state, breeds: { totalCount: state.breeds.totalCount, isLoading: false, data: action.payload}};
+        setBreeds: ((state, action: PayloadAction<IBreeds[]>) => {
+            if (action.payload) return {
+                ...state,
+                breeds: {
+                    totalCount: state.breeds.totalCount,
+                    isLoading: false,
+                    data: action.payload,
+                    current: state.breeds.current
+                }
+            };
+            return {
+                ...state,
+                breeds: {
+                    totalCount: state.breeds.totalCount,
+                    isLoading: false,
+                    data: action.payload,
+                    current: state.breeds.current
+                }
+            };
         }),
-        setBreedsLoading: ((state, action:PayloadAction<boolean>) => {
-            if(action.payload) return {...state, breeds: {totalCount: state.breeds.totalCount, isLoading: true, data: state.breeds.data}}
+        setBreedsLoading: ((state, action: PayloadAction<boolean>) => {
+            if (action.payload) return {
+                ...state,
+                breeds: {
+                    totalCount: state.breeds.totalCount,
+                    isLoading: true,
+                    data: state.breeds.data,
+                    current: state.breeds.current
+                }
+            };
         }),
-        setTotalCount: ((state, action:PayloadAction<number>) => {
-            if(action.payload) state.breeds.totalCount = action.payload
-        })
+        setTotalCount: ((state, action: PayloadAction<number>) => {
+            if (action.payload) state.breeds.totalCount = action.payload;
+        }),
     }
 });
 

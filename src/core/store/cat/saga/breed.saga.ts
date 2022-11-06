@@ -13,6 +13,7 @@ function* loadBreeds(params: TParams): Generator<any, any, any> {
 }
 
 function* loadAllBreeds(): Generator<any, any, any> {
+    yield put(setBreedsLoading(true));
 
     const breeds = yield call(Cat.breeds, null);
 
