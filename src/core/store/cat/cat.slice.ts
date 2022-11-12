@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IBreeds, IInitialState} from "./cat.types";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {IBreeds, IInitialState} from './cat.types';
 
 const initialState: IInitialState = {
     breeds: {
@@ -13,7 +13,7 @@ const initialState: IInitialState = {
 };
 
 const catSlice = createSlice({
-    name: "cats",
+    name: 'cats',
     initialState,
     reducers: {
         setBreeds: ((state, action: PayloadAction<IBreeds[]>) => {
@@ -50,7 +50,12 @@ const catSlice = createSlice({
         setTotalCount: ((state, action: PayloadAction<number>) => {
             if (action.payload) state.breeds.totalCount = action.payload;
         }),
+        setCurrentBreed: ((state, action: PayloadAction<string | null>) => {
+           state.breeds.current.data = state.breeds.data ? state.breeds.data.filter(breed => {
+                return breed.id === action.payload;
+            }) : null;
+        })
     }
 });
 
-export const {reducer: catReducer, actions: {setBreeds, setBreedsLoading, setTotalCount}} = catSlice;
+export const {reducer: catReducer, actions: {setBreeds, setBreedsLoading, setTotalCount, setCurrentBreed}} = catSlice;

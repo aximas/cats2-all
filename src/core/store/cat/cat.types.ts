@@ -1,4 +1,4 @@
-export type TParams = {limit: number | null, page: number | null} | null
+export type TParams = { limit: number | null, page: number | null } | null
 
 export interface IBreeds {
     weight: {
@@ -18,7 +18,7 @@ export interface IBreeds {
     life_span: string,
     indoor: number,
     lap: number,
-    "alt_names": string,
+    'alt_names': string,
     adaptability: number,
     affection_level: number,
     child_friendly: number,
@@ -38,7 +38,7 @@ export interface IBreeds {
     rex: number,
     suppressed_tail: number,
     short_legs: number,
-    "wikipedia_url": string,
+    'wikipedia_url': string,
     hypoallergenic: number,
     reference_image_id: string,
     image: {
@@ -55,7 +55,7 @@ export interface IInitialState {
         isLoading: boolean,
         totalCount: number,
         current: {
-            data: IBreeds | null
+            data: IBreeds[] | null
         }
     }
 }
