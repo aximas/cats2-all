@@ -3,10 +3,13 @@ import React, {useEffect, useState} from 'react';
 import {BreedsBlocks} from './BreedsBlocks';
 
 export const Breeds = () => {
+    // Redux hooks
     const [breeds, isLoading, totalNumber] = useAppSelector(({cat}) => [cat.breeds.data, cat.breeds.isLoading, cat.breeds.totalCount]);
+    const dispatch = useAppDispatch();
+
+    // React hooks
     const [limit, setLimit] = useState(10);
     const [isFetching, setIsFetching] = useState(false);
-    const dispatch = useAppDispatch();
 
     useEffect(() => {
         document.addEventListener('scroll', handleScroll);

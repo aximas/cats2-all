@@ -1,9 +1,8 @@
-import React from "react";
-
-import styles from "./Breeds.module.scss";
-import {IBreeds} from "@core/store/cat/cat.types";
-import imagePlaceholder from "@assets/img/placeholder-image.png";
-import {Link} from "react-router-dom";
+import React from 'react';
+import styles from './Breeds.module.scss';
+import {IBreeds} from '@core/store/cat/cat.types';
+import imagePlaceholder from '@assets/img/placeholder-image.png';
+import {Link} from 'react-router-dom';
 
 export const BreedsBlocks = ({breeds, isLoading}: { breeds: IBreeds[] | null, isLoading: boolean }) => {
 
@@ -14,7 +13,9 @@ export const BreedsBlocks = ({breeds, isLoading}: { breeds: IBreeds[] | null, is
     const renderBreed = () => {
         return breeds?.map(breed => {
             return <article className={styles.breedsItem} key={breed.id}>
-                <Link to={`/breeds/${breed.id}`}><img src={breed.image ? breed.image.url : imagePlaceholder} alt={breed.name} /></Link>
+                <Link to={`/breeds/${breed.id}`}>
+                    <img src={breed.image ? breed.image.url : imagePlaceholder} alt={breed.name} />
+                </Link>
                 <div className={styles.breedInfo}>
                     <p className={styles.breedTag}>{breed.origin}</p>
                     <h3 className='h5'>

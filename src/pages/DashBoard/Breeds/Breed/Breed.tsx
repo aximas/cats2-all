@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect, useMemo, useRef} from 'react';
 import {useAppDispatch, useAppSelector} from '@core/utils/hooks/reduxHooks';
 import {setCurrentBreed} from '@core/store/cat/cat.slice';
 import {useParams} from 'react-router';
@@ -10,17 +10,27 @@ import styles from './Breed.module.scss';
 import {IBreeds} from '@core/store/cat/cat.types';
 
 export const Breed = () => {
-
+    // React router hooks
     const {id} = useParams();
 
+    // Redux hooks
     const [dataArray, cats] = useAppSelector(({cat}) => [cat.breeds.current.data, cat.breeds.data]);
     const dispatch = useAppDispatch();
 
+    // React hooks
+    const articleRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         if(cats) dispatch({type: 'cats/LoadCurrentBreed', payload: id});
         else dispatch({type: 'cats/LoadAllBreeds', payload: id});
+
+        window.scrollTo({top: 0});
+        const scrollIntoView = setTimeout(() => {
+            articleRef.current && articleRef.current.scrollIntoView({behavior: 'smooth'})
+        }, 500)
+
         return () => {
             dispatch(setCurrentBreed(null));
+            clearTimeout(scrollIntoView);
         };
     }, [cats]);
 
@@ -30,7 +40,7 @@ export const Breed = () => {
     }, [dataArray]);
 
     // @TODO: need to add Breed skeleton
-    return data && <article className={styles.breed}>
+    return data && <article className={styles.breed} ref={articleRef}>
         <h3 className={cn('h3', styles.breedTitle)}>
             {data.name}
         </h3>
