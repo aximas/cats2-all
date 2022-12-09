@@ -4,7 +4,7 @@ import {BreedsBlocks} from './BreedsBlocks';
 
 export const Breeds = () => {
     // Redux hooks
-    const [breeds, isLoading, totalNumber] = useAppSelector(({cat}) => [cat.breeds.data, cat.breeds.isLoading, cat.breeds.totalCount]);
+    const [breeds, isLoading, totalNumber] = useAppSelector(({catBreed}) => [catBreed.breeds.data, catBreed.breeds.isLoading, catBreed.breeds.totalCount]);
     const dispatch = useAppDispatch();
 
     // React hooks

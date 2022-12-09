@@ -1,8 +1,9 @@
 import {spawn, call, all} from 'redux-saga/effects';
-import {watcherBreedsSaga} from './saga/breed.saga';
+import {watcherBreedsSaga} from './breeds/breed.saga';
+import {watcherBreedImagesSaga} from '@core/store/cat/images/image.saga';
 
 function* rootSaga(): Generator {
-    const sagas = [watcherBreedsSaga];
+    const sagas = [watcherBreedsSaga, watcherBreedImagesSaga];
 
    const retrySagas = sagas.map(saga => {
         return spawn(function* () {

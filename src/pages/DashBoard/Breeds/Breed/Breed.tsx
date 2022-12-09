@@ -1,35 +1,45 @@
 import React, {useEffect, useMemo, useRef} from 'react';
 import {useAppDispatch, useAppSelector} from '@core/utils/hooks/reduxHooks';
-import {setCurrentBreed} from '@core/store/cat/cat.slice';
+import {setCurrentBreed} from '@core/store/cat/breeds/breed.slice';
+import {setCurrentBreedImages} from '@core/store/cat/images/image.slice';
 import {useParams} from 'react-router';
-import imagePlaceholder from "@assets/img/placeholder-image.png";
+
+import imagePlaceholder from '@assets/img/placeholder-image.png';
 import cn from 'classnames';
 
 
 import styles from './Breed.module.scss';
-import {IBreeds} from '@core/store/cat/cat.types';
+import {IBreeds} from '@core/store/cat/breeds/breed.types';
+import {setActiveLightBox} from '@core/store/cat/lightBox/lightBox.slice';
 
 export const Breed = () => {
     // React router hooks
     const {id} = useParams();
 
     // Redux hooks
-    const [dataArray, cats] = useAppSelector(({cat}) => [cat.breeds.current.data, cat.breeds.data]);
+    const [dataArray, cats, images] = useAppSelector(({catBreed, catImage}) => [
+        catBreed.breeds.current.data,
+        catBreed.breeds.data,
+        catImage.currentBreedImages
+    ]);
     const dispatch = useAppDispatch();
 
     // React hooks
     const articleRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        if(cats) dispatch({type: 'cats/LoadCurrentBreed', payload: id});
+        if (!images) dispatch({type: 'cats/LoadBreedImages', payload: `breed_ids=${id}&limit=10&size=med`});
+
+        if (cats) dispatch({type: 'cats/LoadCurrentBreed', payload: id});
         else dispatch({type: 'cats/LoadAllBreeds', payload: id});
 
         window.scrollTo({top: 0});
         const scrollIntoView = setTimeout(() => {
-            articleRef.current && articleRef.current.scrollIntoView({behavior: 'smooth'})
-        }, 500)
+            articleRef.current && articleRef.current.scrollIntoView({behavior: 'smooth'});
+        }, 500);
 
         return () => {
             dispatch(setCurrentBreed(null));
+            dispatch(setCurrentBreedImages(null));
             clearTimeout(scrollIntoView);
         };
     }, [cats]);
@@ -44,14 +54,15 @@ export const Breed = () => {
         <h3 className={cn('h3', styles.breedTitle)}>
             {data.name}
         </h3>
-        <img src={data.image.url || imagePlaceholder} alt="breed" className={styles.breedImg} />
+        <img src={data.image.url || imagePlaceholder} alt="breed" className={styles.breedImg}
+             onClick={() => dispatch(setActiveLightBox(true))} />
         <p className={cn(styles.breedDescription, 'body')}>
             {data.description}
         </p>
         <dl className={styles.breedDescriptionList}>
             <div>
                 <dt>Weight</dt>
-                <dd>imperial: {data.weight.imperial},  metric: {data.weight.metric}</dd>
+                <dd>imperial: {data.weight.imperial}, metric: {data.weight.metric}</dd>
             </div>
             <div>
                 <dt>From</dt>
@@ -60,10 +71,6 @@ export const Breed = () => {
             <div>
                 <dt>Life span</dt>
                 <dd>{data.life_span} years</dd>
-            </div>
-            <div>
-                <dt>From</dt>
-                <dd>{data.origin}</dd>
             </div>
             <div>
                 <dt>Likes indoor life</dt>

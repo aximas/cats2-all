@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Breeds.module.scss';
-import {IBreeds} from '@core/store/cat/cat.types';
+import {IBreeds} from '@core/store/cat/breeds/breed.types';
 import imagePlaceholder from '@assets/img/placeholder-image.png';
 import {Link} from 'react-router-dom';
 

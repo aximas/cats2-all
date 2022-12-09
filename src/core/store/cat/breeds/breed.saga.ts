@@ -1,8 +1,8 @@
 import {takeEvery, spawn, put, call} from 'redux-saga/effects';
 import {Cat} from '@core/services/cat';
-import {setBreeds, setBreedsLoading, setTotalCount, setCurrentBreed} from '../cat.slice';
+import {setBreeds, setBreedsLoading, setTotalCount, setCurrentBreed} from './breed.slice';
 import {PayloadAction} from '@reduxjs/toolkit';
-import {TParams} from '@core/store/cat/cat.types';
+import {TParams} from '@core/store/cat/breeds/breed.types';
 
 function* loadBreeds(params: TParams): Generator<any, any, any> {
     yield put(setBreedsLoading(true));

@@ -1,10 +1,15 @@
 import {configureStore} from '@reduxjs/toolkit';
 import createMiddleware from 'redux-saga';
-import {catReducer} from './cat/cat.slice';
+import {catBreedReducer} from './cat/breeds/breed.slice';
+import {catImageReducer} from './cat/images/image.slice';
+import {lightBoxReducer} from './cat/lightBox/lightBox.slice';
+
 import rootSaga from './cat/cat.saga';
 
 const reducer = {
-    cat: catReducer,
+    catBreed: catBreedReducer,
+    catImage: catImageReducer,
+    lightBox: lightBoxReducer,
     // image: imageReducer,
     // vote: voteReducer,
     // like: likeReducer

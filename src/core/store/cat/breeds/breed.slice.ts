@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IBreeds, IInitialState} from './cat.types';
+import {IBreeds, IInitialState} from './breed.types';
 
 const initialState: IInitialState = {
     breeds: {
@@ -58,4 +58,4 @@ const catSlice = createSlice({
     }
 });
 
-export const {reducer: catReducer, actions: {setBreeds, setBreedsLoading, setTotalCount, setCurrentBreed}} = catSlice;
+export const {reducer: catBreedReducer, actions: {setBreeds, setBreedsLoading, setTotalCount, setCurrentBreed}} = catSlice;
