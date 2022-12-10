@@ -1,123 +1,124 @@
 .lightBox {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 5;
-  overflow: hidden;
-  backface-visibility: hidden;
-  opacity: 0;
-  transform: translateX(-100%);
-  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    overflow: hidden;
+    backface-visibility: hidden;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease-in, transform 0.3s ease-in;
 }
 
 .isActive {
-  transform: translateX(0);
-  overflow: hidden;
-  opacity: 1;
+    transform: translateX(0);
+    overflow: hidden;
+    opacity: 1;
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.92);
-  width: 100%;
-  height: calc(100vh + 1px);
-  position: fixed;
-  top: -1px;
-  left: 0;
-  will-change: opacity;
+    background-color: rgba(0, 0, 0, 0.92);
+    width: 100%;
+    height: calc(100vh + 1px);
+    position: fixed;
+    top: -1px;
+    left: 0;
+    will-change: opacity;
 }
 
 .loader {
-  height: 25px;
-  width: 25px;
-  border-radius: 50%;
-  position: absolute;
-  display: block;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  top: 47%;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 47%;
 }
 
 .container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 // Close Button styles
 .closeBtn {
-  position: absolute;
-  right: 25px;
-  top: 25px;
-  background-color: rgba(20,25,38, 0.4);
-  width: 50px;
-  height: 48px;
-  z-index: 1;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    background-color: rgba(20, 25, 38, 0.4);
+    width: 50px;
+    height: 48px;
+    z-index: 1;
 
-  &:hover label {
-    opacity: 1;
-  }
+    &:hover label {
+        opacity: 1;
+    }
 
-  &:hover .closeBtnInner{
-    top: 0;
-  }
+    &:hover .closeBtnInner {
+        top: 0;
+    }
 
-  &:hover .closeBtnInner {
-    bottom: 0;
-  }
+    &:hover .closeBtnInner {
+        bottom: 0;
+    }
 }
 
 .closeBtnInner {
-  width: inherit;
-  text-align: center;
-
-  label {
-    font-size: 12px;
-    line-height: 2;
-    text-transform: uppercase;
-    color: #fff;
-    transition: all .3s ease-in;
-    opacity: 0;
-  }
-
-  &:before, &:after {
-    position: absolute;
-    content: '';
-    height: 4px;
     width: inherit;
-    background: #00bfff;
-    left: 0;
-    transition: transform .3s ease-in, opacity .3s ease-in;
-  }
+    text-align: center;
 
-  &:before {
-    top: 50%;
-    transform: rotate(45deg) translate3d(-1px, -1px, 0);
-  }
+    label {
+        font-size: 12px;
+        line-height: 2;
+        text-transform: uppercase;
+        color: #fff;
+        transition: all 0.3s ease-in;
+        opacity: 0;
+    }
 
-  &:after {
-    bottom: 50%;
-    transform: rotate(-45deg) translate3d(-1px, 2px, 0);
-  }
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        height: 4px;
+        width: inherit;
+        background: #00bfff;
+        left: 0;
+        transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+    }
+
+    &:before {
+        top: 50%;
+        transform: rotate(45deg) translate3d(-1px, -1px, 0);
+    }
+
+    &:after {
+        bottom: 50%;
+        transform: rotate(-45deg) translate3d(-1px, 2px, 0);
+    }
 }
 
 .closeBtn:hover .closeBtnInner:before,
 .closeBtn:hover .closeBtnInner:after {
-  transform: rotate(0);
-  opacity: 0;
+    transform: rotate(0);
+    opacity: 0;
 }
 
-
 // slider styles
-.slidersContainer, .slidersTrack {
-  height: 100%;
+.slidersContainer,
+.slidersTrack {
+    height: 100%;
 }
 
 .sliderImg {
-  height: 100%;
-  margin: 0 auto;
-  object-fit: contain;
+    height: 100%;
+    margin: 0 auto;
+    object-fit: contain;
 }

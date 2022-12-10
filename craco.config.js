@@ -9,7 +9,7 @@ module.exports = {
             '@assets': path.resolve(__dirname, 'src/assets'),
             '@tests': path.resolve(__dirname, 'src/tests'),
             '@skeletons': path.resolve(__dirname, 'src/skeletons'),
-            '@routes': path.resolve(__dirname, 'src/routes'),
+            '@routes': path.resolve(__dirname, 'src/routes')
         }
     }
-}
+};

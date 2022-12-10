@@ -1,3 +1,3 @@
 export type IInitialState = {
-    isActive: boolean
-}
+    isActive: boolean;
+};

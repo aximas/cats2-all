@@ -3,28 +3,28 @@
 /// <reference types="react-dom" />
 
 declare module '*.bmp' {
-  const src: string;
-  export default src;
+    const src: string;
+    export default src;
 }
 
 declare module '*.gif' {
-  const src: string;
-  export default src;
+    const src: string;
+    export default src;
 }
 
 declare module '*.jpg' {
-  const src: string;
-  export default src;
+    const src: string;
+    export default src;
 }
 
 declare module '*.jpeg' {
-  const src: string;
-  export default src;
+    const src: string;
+    export default src;
 }
 
 declare module '*.png' {
-  const src: string;
-  export default src;
+    const src: string;
+    export default src;
 }
 
 declare module '*.webp' {
@@ -33,27 +33,27 @@ declare module '*.webp' {
 }
 
 declare module '*.svg' {
-  import * as React from 'react';
+    import * as React from 'react';
 
-  export const ReactComponent: React.SFC<React.SVGProps<SVGSVGElement>>;
+    export const ReactComponent: React.SFC<React.SVGProps<SVGSVGElement>>;
 
-  const src: string;
-  export default src;
+    const src: string;
+    export default src;
 }
 
 declare module '*.module.css' {
-  const classes: { [key: string]: string };
-  export default classes;
+    const classes: { [key: string]: string };
+    export default classes;
 }
 
 declare module '*.module.scss' {
-  const classes: { [key: string]: string };
-  export default classes;
+    const classes: { [key: string]: string };
+    export default classes;
 }
 
 declare module '*.module.sass' {
-  const classes: { [key: string]: string };
-  export default classes;
+    const classes: { [key: string]: string };
+    export default classes;
 }
 
 /// <reference types="node" />
@@ -100,7 +100,7 @@ declare module '*.svg' {
 
     export const ReactComponent: React.FunctionComponent<
         React.SVGProps<SVGSVGElement> & { title?: string }
-        >;
+    >;
 
     const src: string;
     export default src;

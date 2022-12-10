@@ -1,9 +1,5 @@
 import React from 'react';
 
 export const Images = () => {
-    return (
-        <div>
-            Images
-        </div>
-    )
-}
+    return <div>Images</div>;
+};

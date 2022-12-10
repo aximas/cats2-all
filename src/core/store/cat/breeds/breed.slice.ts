@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IBreeds, IInitialState} from './breed.types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IBreeds, IInitialState } from './breed.types';
 
 const initialState: IInitialState = {
     breeds: {
@@ -16,16 +16,17 @@ const catSlice = createSlice({
     name: 'cats',
     initialState,
     reducers: {
-        setBreeds: ((state, action: PayloadAction<IBreeds[]>) => {
-            if (action.payload) return {
-                ...state,
-                breeds: {
-                    totalCount: state.breeds.totalCount,
-                    isLoading: false,
-                    data: action.payload,
-                    current: state.breeds.current
-                }
-            };
+        setBreeds: (state, action: PayloadAction<IBreeds[]>) => {
+            if (action.payload)
+                return {
+                    ...state,
+                    breeds: {
+                        totalCount: state.breeds.totalCount,
+                        isLoading: false,
+                        data: action.payload,
+                        current: state.breeds.current
+                    }
+                };
             return {
                 ...state,
                 breeds: {
@@ -35,27 +36,33 @@ const catSlice = createSlice({
                     current: state.breeds.current
                 }
             };
-        }),
-        setBreedsLoading: ((state, action: PayloadAction<boolean>) => {
-            if (action.payload) return {
-                ...state,
-                breeds: {
-                    totalCount: state.breeds.totalCount,
-                    isLoading: true,
-                    data: state.breeds.data,
-                    current: state.breeds.current
-                }
-            };
-        }),
-        setTotalCount: ((state, action: PayloadAction<number>) => {
+        },
+        setBreedsLoading: (state, action: PayloadAction<boolean>) => {
+            if (action.payload)
+                return {
+                    ...state,
+                    breeds: {
+                        totalCount: state.breeds.totalCount,
+                        isLoading: true,
+                        data: state.breeds.data,
+                        current: state.breeds.current
+                    }
+                };
+        },
+        setTotalCount: (state, action: PayloadAction<number>) => {
             if (action.payload) state.breeds.totalCount = action.payload;
-        }),
-        setCurrentBreed: ((state, action: PayloadAction<string | null>) => {
-           state.breeds.current.data = state.breeds.data ? state.breeds.data.filter(breed => {
-                return breed.id === action.payload;
-            }) : null;
-        })
+        },
+        setCurrentBreed: (state, action: PayloadAction<string | null>) => {
+            state.breeds.current.data = state.breeds.data
+                ? state.breeds.data.filter((breed) => {
+                      return breed.id === action.payload;
+                  })
+                : null;
+        }
     }
 });
 
-export const {reducer: catBreedReducer, actions: {setBreeds, setBreedsLoading, setTotalCount, setCurrentBreed}} = catSlice;
+export const {
+    reducer: catBreedReducer,
+    actions: { setBreeds, setBreedsLoading, setTotalCount, setCurrentBreed }
+} = catSlice;
