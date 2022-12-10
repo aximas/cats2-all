@@ -2,7 +2,8 @@ import React, {useEffect, useMemo, useRef} from 'react';
 import {useAppDispatch, useAppSelector} from '@core/utils/hooks/reduxHooks';
 import {setCurrentBreed} from '@core/store/cat/breeds/breed.slice';
 import {setCurrentBreedImages} from '@core/store/cat/images/image.slice';
-import {useParams} from 'react-router';
+import {useParams, useNavigate} from 'react-router';
+import {ReactComponent as ArrowBack} from '@assets/logo/arrows/arrow-back.svg';
 
 import imagePlaceholder from '@assets/img/placeholder-image.png';
 import cn from 'classnames';
@@ -11,10 +12,13 @@ import cn from 'classnames';
 import styles from './Breed.module.scss';
 import {IBreeds} from '@core/store/cat/breeds/breed.types';
 import {setActiveLightBox} from '@core/store/cat/lightBox/lightBox.slice';
+import {SvgIcon} from '@components/MainComponents/SvgIcon/SvgIcon';
+
 
 export const Breed = () => {
     // React router hooks
     const {id} = useParams();
+    const navigate = useNavigate();
 
     // Redux hooks
     const [dataArray, cats, images] = useAppSelector(({catBreed, catImage}) => [
@@ -51,9 +55,14 @@ export const Breed = () => {
 
     // @TODO: need to add Breed skeleton
     return data && <article className={styles.breed} ref={articleRef}>
-        <h3 className={cn('h3', styles.breedTitle)}>
-            {data.name}
-        </h3>
+        <div className={styles.breedTitleWrapper}>
+            <button className={styles.goBackBtn} onClick={() => navigate(-1)}>
+                <SvgIcon Icon={ArrowBack} />
+            </button>
+            <h3 className={cn('h3', styles.breedTitle)}>
+                {data.name}
+            </h3>
+        </div>
         <img src={data.image.url || imagePlaceholder} alt="breed" className={styles.breedImg}
              onClick={() => dispatch(setActiveLightBox(true))} />
         <p className={cn(styles.breedDescription, 'body')}>
