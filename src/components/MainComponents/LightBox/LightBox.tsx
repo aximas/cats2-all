@@ -21,7 +21,7 @@ export const LightBox = ({isLoading = false}: { isLoading?: boolean }) => {
         setIsClosed(false);
     };
 
-    return (dataArray) ? <>
+    return (dataArray?.length) ? (<>
         <div className={styles.overlay} />
         {isLoading ?
             (<p className={styles.loader}>
@@ -44,7 +44,7 @@ export const LightBox = ({isLoading = false}: { isLoading?: boolean }) => {
                     </SplideTrack>
                 </Splide>
             </div>)}
-    </> : <div />;
+    </>) : <div />;
 };
 
 export const LightBoxContainer = () => {

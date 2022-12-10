@@ -27,7 +27,7 @@ export const Breed = () => {
     // React hooks
     const articleRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        if (!images) dispatch({type: 'cats/LoadBreedImages', payload: `breed_ids=${id}&limit=10&size=med`});
+        if (!images) dispatch({type: 'cats/LoadBreedImages', payload: `breed_ids=${id}&limit=10&size=small`});
 
         if (cats) dispatch({type: 'cats/LoadCurrentBreed', payload: id});
         else dispatch({type: 'cats/LoadAllBreeds', payload: id});
