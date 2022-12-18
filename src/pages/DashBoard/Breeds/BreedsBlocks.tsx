@@ -25,6 +25,7 @@ export const BreedsBlocks = ({
                                 breed.image ? breed.image.url : imagePlaceholder
                             }
                             alt={breed.name}
+                            loading='lazy'
                         />
                     </Link>
                     <div className={styles.breedInfo}>

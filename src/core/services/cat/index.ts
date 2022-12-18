@@ -12,7 +12,6 @@ export const Cat = {
         return breeds.json();
     },
     async image(queryParams: Partial<IImagesParams> = {}) {
-        console.log('queryParams', queryParams);
         const assignedParams = new URLSearchParams(
             getSearchParams(queryParams)
         );
