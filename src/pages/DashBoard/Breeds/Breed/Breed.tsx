@@ -65,17 +65,23 @@ export const Breed = () => {
                 <div className={styles.breedTitleWrapper}>
                     <button
                         className={styles.goBackBtn}
-                        onClick={() => navigate(-1)}
-                    >
+                        onClick={() => navigate(-1)}>
                         <SvgIcon Icon={ArrowBack} />
                     </button>
                     <h3 className={cn('h3', styles.breedTitle)}>{data.name}</h3>
                 </div>
                 <img
-                    src={data.image.url || imagePlaceholder}
+                    src={
+                        data.reference_image_id
+                            ? `https://cdn2.thecatapi.com/images/${data.reference_image_id}.jpg`
+                            : imagePlaceholder
+                    }
                     alt='breed'
                     className={styles.breedImg}
                     onClick={() => dispatch(setActiveLightBox(true))}
+                    onError={(event) => {
+                        event.currentTarget.src = `https://cdn2.thecatapi.com/images/${data.reference_image_id}.png`;
+                    }}
                 />
                 <p className={cn(styles.breedDescription, 'body')}>
                     {data.description}

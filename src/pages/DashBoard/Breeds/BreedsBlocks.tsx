@@ -22,10 +22,15 @@ export const BreedsBlocks = ({
                     <Link to={`/breeds/${breed.id}`}>
                         <img
                             src={
-                                breed.image ? breed.image.url : imagePlaceholder
+                                breed.reference_image_id
+                                    ? `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
+                                    : imagePlaceholder
                             }
                             alt={breed.name}
                             loading='lazy'
+                            onError={(event) => {
+                                event.currentTarget.src = `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.png`;
+                            }}
                         />
                     </Link>
                     <div className={styles.breedInfo}>
