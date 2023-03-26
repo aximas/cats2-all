@@ -2,7 +2,7 @@ const baseUrl = 'https://api.thecatapi.com/v1';
 const serverUrl =
     process.env.NODE_ENV && process.env.NODE_ENV === 'development'
         ? 'http://localhost:4040'
-        : 'https://cats2-all.herokuapp.com/';
+        : 'https://cats2-all.herokuapp.com';
 console.log('serverUrl', serverUrl);
 
 export const API = {
