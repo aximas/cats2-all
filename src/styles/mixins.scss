@@ -147,3 +147,72 @@
     line-height: 1.6;
     text-transform: uppercase;
 }
+
+@mixin absolute_vertical_alignment {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin flex(
+    $v_align: false,
+    $h_align: false,
+    $direction: false,
+    $v_h_align: false,
+    $c_gap: false,
+    $r_gap: false,
+    $gap: false,
+    $wrap: false,
+    $options: false,
+    $all_included: false,
+    $basis: false
+) {
+    display: flex;
+
+    @if ($v_align) {
+        align-items: $v_align;
+    }
+
+    @if ($h_align) {
+        justify-content: $h_align;
+    }
+
+    @if ($direction) {
+        flex-direction: $direction;
+    }
+
+    @if ($v_h_align) {
+        align-items: $v_h_align;
+        justify-content: $v_h_align;
+    }
+
+    @if ($c_gap) {
+        column-gap: $c_gap;
+    }
+
+    @if ($r_gap) {
+        row-gap: $r_gap;
+    }
+
+    @if ($gap) {
+        gap: $gap;
+    }
+
+    @if ($wrap) {
+        flex-wrap: $wrap;
+    }
+
+    @if ($options) {
+        flex: $options;
+    }
+
+    @if ($all_included) {
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    @if ($basis) {
+        flex-basis: $basis;
+    }
+}

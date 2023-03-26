@@ -1,0 +1,155 @@
+@import 'src/styles/mixins';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo {
+  @include block_480 {
+    svg {
+      width: 56px;
+      height: 56px;
+    }
+  }
+}
+
+.menuNav {
+  margin-left: auto;
+  transition: transform 0.6s ease-out;
+  z-index: 5;
+
+  @include block_768 {
+    @include flex($v_align: center, $h_align: center);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &:before {
+      width: 102%;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #62DBFB;
+      transform-origin: 0 0;
+      transition: transform 0.4s ease-out 0.2s;
+      transform: skew(-14deg) translateX(-120%);
+    }
+
+    .menu {
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+      gap: 64px;
+      transform: skew(-16deg);
+    }
+  }
+
+  &.isOpen {
+    transform: translateX(0);
+
+    &:before {
+      transform: skew(-14deg) translateX(0);
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  gap: 8px;
+
+  @include block_480 {
+    gap: 4px;
+  }
+}
+
+.menuLink {
+  background-color: #fff;
+  padding: 12px 24px;
+  height: 100%;
+  border-radius: 8px;
+
+  @include block_480 {
+    padding: 8px 16px;
+  }
+}
+
+.burgerButton {
+  padding: 8px;
+  z-index: 10;
+  display: none;
+
+  @include block_768 {
+    display: flex;
+  }
+}
+
+.burger {
+  position: relative;
+  width: 29px;
+  height: 29px;
+
+  &:hover {
+    &:after, &:before {
+      background-color: var(--nav-hover-color);
+    }
+  }
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 29px;
+    height: 4px;
+    background-color: var(--nav-default-color);
+    transition: background-color 0.3s ease-out, transform 0.6s ease-out;
+    transform: skew(26deg);
+  }
+
+  &:after {
+    bottom: 0;
+  }
+
+  &:before {
+    top: 0;
+  }
+
+  &.isOpen {
+    .burgerItem {
+      opacity: 0;
+    }
+
+    &:before {
+      transform: translateY(12px) rotate(-45deg) skew(0);
+    }
+
+    &:after {
+      transform: translateY(-12px) rotate(45deg) skew(0);
+    }
+  }
+}
+
+.burgerItem {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) skew(-26deg);
+  left: -2px;
+  width: 29px;
+  height: 4px;
+  background-color: var(--nav-default-color);
+  transition: opacity 0.3s ease-out 0.3s;
+
+  &:hover {
+    background-color: var(--nav-hover-color);
+  }
+}

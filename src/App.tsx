@@ -3,6 +3,7 @@ import { MainRoutes } from '@routes/MainRoutes';
 import { LightBoxContainer } from '@components/MainComponents/LightBox/LightBox';
 import { useAppSelector } from '@core/utils/hooks/reduxHooks';
 import cn from 'classnames';
+import { Alert } from '@components/MainComponents/Alert/Alert';
 
 function App() {
     // Redux hooks
@@ -10,6 +11,7 @@ function App() {
 
     return (
         <div className={cn('container', { ['modal-active']: isActive })}>
+            <Alert />
             <MainRoutes />
             <LightBoxContainer />
         </div>

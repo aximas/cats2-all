@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './Breeds.module.scss';
 import { IBreeds } from '@core/store/cat/breeds/breed.types';
-import imagePlaceholder from '@assets/img/placeholder-image.png';
-import { Link } from 'react-router-dom';
+import { BreedsBlock } from '@pages/DashBoard/Breeds/BreedsBlock';
 
 export const BreedsBlocks = ({
     breeds,
@@ -17,31 +16,7 @@ export const BreedsBlocks = ({
 
     const renderBreed = () => {
         return breeds?.map((breed) => {
-            return (
-                <article className={styles.breedsItem} key={breed.id}>
-                    <Link to={`/breeds/${breed.id}`}>
-                        <img
-                            src={
-                                breed.reference_image_id
-                                    ? `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
-                                    : imagePlaceholder
-                            }
-                            alt={breed.name}
-                            loading='lazy'
-                            onError={(event) => {
-                                event.currentTarget.src = `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.png`;
-                            }}
-                        />
-                    </Link>
-                    <div className={styles.breedInfo}>
-                        <p className={styles.breedTag}>{breed.origin}</p>
-                        <h3 className='h5'>{breed.name}</h3>
-                        <p className={styles.breedDescription}>
-                            {breed.description}
-                        </p>
-                    </div>
-                </article>
-            );
+            return <BreedsBlock breed={breed} key={breed.id} />;
         });
     };
 

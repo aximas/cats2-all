@@ -12,8 +12,8 @@ const initialState: IInitialState = {
     }
 };
 
-const catSlice = createSlice({
-    name: 'cats',
+const breedSlice = createSlice({
+    name: 'breeds',
     initialState,
     reducers: {
         setBreeds: (state, action: PayloadAction<IBreeds[]>) => {
@@ -65,4 +65,4 @@ const catSlice = createSlice({
 export const {
     reducer: catBreedReducer,
     actions: { setBreeds, setBreedsLoading, setTotalCount, setCurrentBreed }
-} = catSlice;
+} = breedSlice;

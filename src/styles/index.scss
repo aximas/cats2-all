@@ -1,15 +1,84 @@
 @import 'normalize';
 @import 'typography';
 @import 'src/styles/mixins';
+@import 'focus-visible';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 :root {
+    /* Shadows: */
+    --shadow: 0 0 0 4px rgb(13 110 253 / 25%);
+    --inset-shadow: inset 0 0 0 4px rgb(13 110 253 / 25%);
+    --button-hover-shadow: 0 2px 8px -4px rgb(0 0 0 / 8%),
+    0 4px 20px -6px rgb(0 0 0 / 8%);
+
     /* Font Families */
     --font-base: 'Inter', -apple-system, blinkmacsystemfont, 'Segoe UI',
-        'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
-}
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
 
+    /* Font Colors */
+    --primary-text-color: #19192c;
+    --secondary-text-color: #535361;
+    --tertiary-text-color: #81818b;
+    --disabled-text-color: #afafb5;
+    --text-bg-color: #f7f7f7;
+
+    /* Primary Colors: */
+    --primary-nav-bg: rgb(255 255 255 / 70%);
+    --primary-main-color: #3c97ff; // Main color used by most components
+    --primary-light-color: #6eb1ff; // Alternative light shade
+    --primary-dark-color: #0057c7; // Alternative dark shade
+    --primary-contrast-color: #fff; // Color that keeps a contrast ratio above AA when XX. main is used as a bg. color
+    --primary-contained-hover-color: #125bb0; // Fill background color for contained variant components in hover state (Button, FAB, etc)
+    --primary-outlined-hover-color: #edf5ff; // Fill background color for outlined & text variant components in hover state (Button,etc)
+    --primary-outlined-resting-color: #9dc9fc; // Main color used by most components
+
+    /* Action Colors */
+    --active-action-color: #82828d; // Fill color for components in active state (List, Table, etc)
+    --hover-action-color: #f6f6f7; // Fill background for components in hover state (List, Table, etc)
+    --selected-action-color: #ededee; // Fill background for components in selected state (List, Table, etc)
+    --disabled-action-color: #a7a7af; // Content color for components in disabled state (Button, List, Table, etc)
+    --disabled-bg-action-color: #e3e3e5; // Fill background for components in disabled state (List, Table, etc)
+    --focus-action-color: #e3e3e5; // Fill background for components in focus state (List, Table, etc)
+
+    /* Navigation */
+    --nav-default-color: #82828d; // Default state for all navigation buttons/Icons (Sidebar, Header, Sub-Nav, Pagination)
+    --nav-active-color: #45454f; // Fulfillment state for all navigation buttons/Icons (Sidebar, Header, Sub-Nav, Pagination)
+    --nav-hover-color: #52525e; // Hover state for all navigation buttons/Icons (Sidebar, Header, Sub-Nav, Pagination)
+    --nav-disabled-color: #a7a7af; // Disabled state for all navigation buttons/Icons (Sidebae, Header, Sub-Nav, Pagination)
+    --nav-disabled-bg-color: #e3e3e5; // Disabled state for all navigation buttons/Icons (Sidebae, Header, Sub-Nav, Pagination)
+    --nav-divider-color: #e5e5e9; // Dividing sections
+
+    /* Error */
+    --err-main-color: #fd3f3f; // Used for Error alert, fails, unfilled inputs, etc.
+    --err-light-color: #ff776b; // Alternative light shade
+    --err-dark-color: #c20017; // Alternative dark shade
+    --err-contained-hover-bg: #b22c2c; // Fill background color for contained variant components in hover state (Button, FAB, etc)
+    --err-outlined-hover-bg: #fff0f0; // Fill background color for outlined & text variant components in hover state (Button,etc)
+    --err-outlined-resting-border-color: #fe9f9f; // Used for Error alert, fails, unfilled inputs, etc.
+    --err-content-color: #651919; // text color for the error Alert components
+    --err-bg: #ffecec; // Background color for the error Alert component
+
+    /* Success */
+    --success-main-color: #0fe351; // Used for Success alert, activation, current network, etc.
+    --success-light-color: #69ff82; // Alternative light shade
+    --success-dark-color: #00ac38; // Alternative dark shade
+    --success-contained-hover-bg: #0b9f39; // Fill background color for contained variant components in hover state (Button, FAB, etc)
+    --success-outlined-hover-bg: #ecfdf1; // Fill background color for outlined & text variant components in hover state (Button,etc)
+    --success-outlined-resting-color: #87f1a8; // Used for success alert, activations, completion inputs, etc..
+    --success-content-color: #065b20; // text color for the success Alert components
+    --success-bg: #e7fdee; // Background color for the success Alert component
+
+    /* Warning */
+    --warning-main-color: #ffa200; // Used for Warning alert, strong suggestions, unfilled optinal inputs, etc.
+    --warning-light-color: #ffd349; // Alternative light shade
+    --warning-dark-color: #d86700; // Alternative dark shade
+    --warning-contained-hover-bg: #b37200; // Fill background color for contained variant components in hover state (Button, FAB, etc)
+    --warning-outlined-hover-bg: #fff8eb; // Fill background color for outlined & text variant components in hover state (Button,etc)
+    --warning-outlined-resting-color: #ffd180; // Used for warning alert, activations, completion inputs, etc..
+    --warning-content-color: #664100; // text color for the warning Alert components
+    --warning-bg: #fff6e6; // Background color for the warning Alert component
+}
 html {
     font-size: 100%;
 }

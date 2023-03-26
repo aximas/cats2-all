@@ -1,0 +1,13 @@
+:focus-visible {
+	box-shadow: var(--shadow);
+	outline: 0;
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+	outline: none;
+}
+
+.focus-visible {
+	box-shadow: var(--shadow);
+	outline: 0;
+}

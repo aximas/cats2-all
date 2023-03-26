@@ -11,11 +11,11 @@
     margin: 0 auto;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 6px;
+.Layout.mobileMenu {
+    height: 100vh;
+    overflow: hidden;
+    min-height: auto;
+    padding-right: 18px;
 }
 
 .main {
@@ -24,35 +24,6 @@
     height: 100%;
     @include block_480 {
         margin: 12px;
-    }
-}
-
-.logo {
-    @include block_480 {
-        svg {
-            width: 56px;
-            height: 56px;
-        }
-    }
-}
-
-.menu {
-    display: flex;
-    gap: 8px;
-
-    @include block_480 {
-        gap: 4px;
-    }
-}
-
-.menuLink {
-    background-color: #fff;
-    padding: 12px 24px;
-    height: 100%;
-    border-radius: 8px;
-
-    @include block_480 {
-        padding: 8px 16px;
     }
 }
 

@@ -1,9 +1,16 @@
 import { spawn, call, all } from 'redux-saga/effects';
 import { watcherBreedsSaga } from './breeds/breed.saga';
 import { watcherBreedImagesSaga } from '@core/store/cat/images/image.saga';
+import { watcherAuthSaga } from '@core/store/auth/auth.saga';
+import { watcherAlertSaga } from '@core/store/alert/alert.saga';
 
 function* rootSaga(): Generator {
-    const sagas = [watcherBreedsSaga, watcherBreedImagesSaga];
+    const sagas = [
+        watcherBreedsSaga,
+        watcherBreedImagesSaga,
+        watcherAuthSaga,
+        watcherAlertSaga
+    ];
 
     const retrySagas = sagas.map((saga) => {
         return spawn(function* () {

@@ -32,8 +32,7 @@ export const LightBox = ({ isLoading = false }: { isLoading?: boolean }) => {
                         className={styles.closeBtn}
                         aria-label='Close'
                         onClick={() => setIsClosed(true)}
-                        onTransitionEnd={handleClose}
-                    >
+                        onTransitionEnd={handleClose}>
                         <div className={styles.closeBtnInner}>
                             <label>Back</label>
                         </div>
@@ -48,8 +47,7 @@ export const LightBox = ({ isLoading = false }: { isLoading?: boolean }) => {
                             type: 'loop'
                         }}
                         aria-label={`${dataArray[0].name} images slider`}
-                        className={styles.slidersContainer}
-                    >
+                        className={styles.slidersContainer}>
                         <SplideTrack className={styles.slidersTrack}>
                             {images &&
                                 images.map((image) => (
@@ -79,8 +77,7 @@ export const LightBoxContainer = () => {
             className={cn(styles.lightBox, { [styles.isActive]: isActive })}
             aria-hidden='false'
             role='dialog'
-            tabIndex={-1}
-        >
+            tabIndex={-1}>
             <LightBox />
         </div>
     );

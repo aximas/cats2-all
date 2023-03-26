@@ -1,0 +1,278 @@
+@import 'src/styles/mixins';
+
+@mixin medium-button {
+	border-radius: 6px;
+	font-size: 0.938rem;
+	font-weight: 700;
+	height: 40px;
+	letter-spacing: 0.028rem;
+	line-height: 1.47;
+	padding: 9px 20px;
+
+	.arrowIcon {
+		height: 22px;
+		width: 22px;
+	}
+
+	.loaderIcon {
+		height: 40px;
+		width: 40px;
+	}
+}
+
+@mixin small-button {
+	border-radius: 4px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: 32px;
+	letter-spacing: 0.024rem;
+	line-height: 1.43;
+	padding: 6px 16px;
+
+	.arrowIcon {
+		height: 18px;
+		width: 18px;
+	}
+
+	.loaderIcon {
+		height: 32px;
+		width: 32px;
+	}
+}
+
+.btn {
+	@include flex($v_h_align: center);
+
+	background-color: transparent;
+	border: 0;
+	color: inherit;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	transition: color 0.3s, background-color 0.3s;
+
+	&:disabled {
+		background-color: var(--disabled-bg-action-color);
+		pointer-events: none;
+	}
+}
+
+/* Size */
+.small {
+	@include small-button;
+}
+
+.medium {
+	@include medium-button;
+
+	@include block_768 {
+		@include small-button;
+	}
+}
+
+.large {
+	border-radius: 8px;
+	font-size: 1rem;
+	font-weight: 700;
+	height: 48px;
+	letter-spacing: 0.03rem;
+	line-height: 1.5;
+	padding: 12px 24px;
+
+	@include block_768 {
+		@include medium-button;
+	}
+
+	.arrowIcon {
+		height: 24px;
+		width: 24px;
+	}
+
+	.loaderIcon {
+		height: 48px;
+		width: 48px;
+	}
+}
+
+/* Variant */
+.contained {
+	border-width: 0;
+
+	/* Color */
+	&.primary,
+	.loaderIconWrapper {
+		background-color: var(--primary-main-color);
+		color: var(--primary-contrast-color);
+
+		&:hover {
+			background-color: var(--primary-contained-hover-color);
+		}
+
+		&:disabled {
+			/* Action/Disabled Background */
+			background-color: var(--disabled-bg-action-color);
+			color: var(--disabled-action-color);
+		}
+	}
+}
+
+.outlined {
+	border-style: solid;
+	border-width: 1.5px;
+
+	/* Color */
+	&.primary,
+	.loaderIconWrapper {
+		background-color: #fff;
+		border-color: var(--primary-outlined-resting-color);
+		color: var(--primary-main-color);
+
+		&:hover {
+			background-color: var(--primary-outlined-hover-color);
+		}
+
+		&:disabled {
+			border-color: var(--disabled-bg-action-color);
+			color: var(--disabled-action-color);
+		}
+	}
+
+	&.danger {
+		background-color: #fff;
+		border-color: var(--err-outlined-resting-border-color);
+		color: var(--err-main-color);
+
+		&:hover {
+			background-color: var(--err-outlined-hover-bg);
+		}
+
+		&:disabled {
+			border-color: var(--nav-disabled-bg-color);
+			color: var(--nav-disabled-color);
+		}
+
+		.loaderIcon {
+			fill: var(--err-main-color);
+		}
+	}
+}
+
+.text {
+	/* Color */
+	&.primary,
+	.loaderIconWrapper {
+		background-color: transparent;
+		border-color: var(--primary-outlined-resting-color);
+		color: var(--primary-main-color);
+
+		&:hover {
+			background-color: var(--primary-outlined-hover-color);
+		}
+
+		&:disabled {
+			color: var(--disabled-action-color);
+		}
+	}
+}
+
+/* Arrow */
+.left {
+	padding-left: 12px;
+
+	.arrowIcon {
+		margin-right: 8px;
+		transform: rotate(90deg);
+	}
+}
+
+.right {
+	flex-direction: row-reverse;
+	padding-right: 12px;
+
+	.arrowIcon {
+		margin-left: 8px;
+		transform: rotate(-90deg);
+	}
+}
+
+/* Loader */
+.loader {
+	overflow: hidden;
+	pointer-events: none;
+	position: relative;
+
+	.loaderIconWrapper,
+	.confirmingText {
+		@include flex($v_h_align: center);
+
+		background-color: inherit;
+		cursor: default;
+		height: 100%;
+		position: absolute;
+		width: 100%;
+		z-index: 1;
+
+		.loaderIcon {
+			color: #fff;
+		}
+	}
+}
+
+.loaderPrepend:not(.default) {
+	justify-content: flex-end;
+	position: static;
+}
+
+.copyIcon {
+	color: var(--nav-default-color);
+}
+
+/* Confirming ... */
+.confirmingText {
+	.point:nth-child(1) {
+		animation: point1 2s infinite;
+	}
+
+	@keyframes point1 {
+		0% {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		100% {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	.point:nth-child(2) {
+		animation: point2 2s steps(10) infinite;
+	}
+
+	@keyframes point2 {
+		0% {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		100% {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	.point:nth-child(3) {
+		animation: point3 2s steps(2) infinite;
+	}
+
+	@keyframes point3 {
+		0% {
+			opacity: 0.4;
+			visibility: hidden;
+		}
+
+		100% {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
